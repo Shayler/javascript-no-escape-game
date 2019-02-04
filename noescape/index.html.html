@@ -1,0 +1,222 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>No Escape</title>
+<link href="css/game.css" rel="stylesheet" type="text/css">
+
+<script type='text/javascript'>
+
+const l1 = [
+    [0b0011, 0b0000, 0b0100, 0b1111, 0b1100, 0b0000, 0b0001, 0b0011, 0b0001, 0b00100, 0b0111, 0b1111],
+    [0b0000, 0b0011, 0b0011, 0b0000, 0b0000, 0b0000, 0b0000, 0b0000, 0b0001, 0b00100, 0b0111, 0b1111],
+    [0b0011, 0b0011, 0b0011, 0b0011, 0b0010, 0b0001, 0b0000, 0b0001, 0b0001, 0b00100, 0b0111, 0b1111],
+    [0b0011, 0b0011, 0b0011, 0b0011, 0b0000, 0b0000, 0b0000, 0b0000, 0b0001, 0b00100, 0b0111, 0b1111],
+    [0b0000, 0b0000, 0b0000, 0b0000, 0b0000, 0b0011, 0b0000, 0b0000, 0b0001, 0b00100, 0b0111, 0b1111],
+    [0b0000, 0b0000, 0b0000, 0b0011, 0b0000, 0b0000, 0b0000, 0b0000, 0b0001, 0b00100, 0b0111, 0b1111],
+    [0b0000, 0b0000, 0b0000, 0b0000, 0b0000, 0b0011, 0b0000, 0b0000, 0b0001, 0b00100, 0b0111, 0b1111],
+    [0b0010, 0b0000, 0b0000, 0b0000, 0b0000, 0b0000, 0b0000, 0b0000, 0b0001, 0b00100, 0b0111, 0b1111],
+    [0b0000, 0b0000, 0b0000, 0b0000, 0b0000, 0b0000, 0b0000, 0b0000, 0b0001, 0b00100, 0b0111, 0b1111],
+    [0b0000, 0b0000, 0b0001, 0b0010, 0b0000, 0b0000, 0b0000, 0b0000, 0b0001, 0b00100, 0b0111, 0b1111],
+    [0b0000, 0b0000, 0b0000, 0b0000, 0b1000, 0b0000, 0b0000, 0b0000, 0b0001, 0b00100, 0b0111, 0b1111],
+    [0b0001, 0b0000, 0b0000, 0b0000, 0b0000, 0b0000, 0b0000, 0b0000, 0b0001, 0b00100, 0b0111, 0b1111]
+  ];
+
+let currLevel;
+
+document.onkeydown = keyMove;
+
+function keyMove(event) {
+
+    e = event || window.event;
+
+    if (e.keyCode == '38') {
+        console.log('up');
+        // up arrow
+    }
+    else if (e.keyCode == '40') {
+        // down arrow
+    }
+    else if (e.keyCode == '37') {
+       // left arrow
+    }
+    else if (e.keyCode == '39') {
+       // right arrow
+    }
+
+}
+
+function moveUp() {
+  
+  console.log(canUp(currLevel.player, currLevel.maze));
+}
+
+function moveRight() {
+  
+}
+
+function moveDown() {  
+
+}
+
+function moveLeft() {
+  
+}
+
+
+class Level {
+  constructor(size, level, map) {
+    this.maze = createMaze(size, level, map);
+    this.start = [0,0];
+    this.end = [9,9];
+    this.player = [0,0];
+  }
+}
+
+function createMaze(size, level, map) {
+  return map;
+}
+
+class Column {
+  constructor (size) {
+    
+  }
+  
+}
+
+class Box {
+  constructor(size, level) {
+    this.top = false;
+    this.left = false;
+    
+  }
+}
+
+
+
+function canUp (pos, maze) {
+  console.log(pos);
+  console.log(maze);
+  return (maze[pos[1]][pos[2]].top && pos[2] != 0) ? true : false;
+}
+
+function canRight (pos, maze) {
+  return (maze[(pos[1]+1)][pos[2]].left && (maze[(pos[1]+1)])) ? true : false;
+}
+
+function canDown (pos, maze) {
+  return (maze[pos[1]][(pos[2]+1)].top && (maze[(pos[1]+1)])) ? true : false;
+}  
+
+function canLeft (pos, maze) {
+  return (maze[pos[1]][pos[2]].left && pos[1] != 0) ? true : false;
+}
+
+function start() {
+  currLevel = new Level('normal', 1, l1)
+  drawNodes(l1);
+}
+
+function drawNodes(l1) {
+  gameMaze = document.getElementById('game-maze');
+  for (var i = 0; i < l1.length; i++) {
+    gameCol = document.createElement('div');
+    gameCol.id = 'game-col-'+ (i+1);
+    gameCol.className = 'game-col';
+    gameMaze.appendChild(gameCol);
+    for (var j = 0; j < l1[i].length; j++) {
+      gameBox = document.createElement('div');
+      gameBox.id = 'game-box-'+ (j+1);
+      gameBox.className = 'game-box';
+      
+      if (leftWall(l1[i][j])) {
+        gameBox.className += ' left';        
+      };
+ 
+      if (topWall(l1[i][j])) {
+        gameBox.className += ' top';        
+      };
+      
+      gameCol.appendChild(gameBox);      
+    }
+  }
+}
+
+function leftWall(box) {
+  const mask = 1 << 1;
+  return ((box & mask) != 0) ? true : false;
+};
+
+function topWall(box) {
+  const mask = 1 << 0;
+  return ((box & mask) != 0) ? true : false;
+};
+
+</script>
+</head>
+<body>
+	<div class="container">
+		<div class="main">
+    <div class="game-header">
+			<h1 class="game-title" id="game-title">
+        No Escape
+      </h1>
+      <div class="game-github" id="game-github">
+      View on GitHub
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="game-icon" style="color: blue;">
+            <use xlink:href="github.svg"></use>
+        </svg>
+      </div>      
+    </div>
+
+      
+      <div class="game-container" id="game-container">
+      <div class="game-interface" id="game-interface">
+        <div class="game-controls" id="game-controls">
+          <div class="game-controls-top">
+            <div class="direction" ></div>
+          </div>
+          <div class="game-controls-middle">
+            <div class="direction" onclick="moveUp()"></div>
+            <div class="direction"></div>
+          </div>
+          <div class="game-controls-bottom">
+            <div class="direction"></div>
+          </div>
+        </div>
+        <div class="game-inventory" id="game-inventory">
+        
+        </div>
+        <div class="game-buttons" id="game-buttons">
+          <div class="game-start" id="game-start" onclick="start()">Start</div>
+        </div>
+      </div>
+      <div class="game-maze" id="game-maze">
+        <div class="game-light" id="game-light">
+          <div class="game-player" id="game-player">
+          </div>
+        </div>
+        
+      </div>
+		</div>
+	</div>
+  <div>
+  <h3>Revision Log</h3>
+    <ul>
+      <li style="padding-bottom:20px;">
+        Switch to Static Map ~ Initial designs had the game moving sideways at a constant rate (depending on difficulty) and all routes visible - similar to the old Mario themed "Game & Watch" handheld that I own.  
+        This would add a lot of complexity for redrawing the maze with every tick and then having to manage moving the character.  Also items wouldn't make as much sense for what I'd had planned.  
+        Decided to stick to a static map but having extensive items and multiple difficulties to offset it being less static.  
+      </li>
+      <li style="padding-bottom:20px;">
+        <div style="display:flex;"><span style="width:500px;">Added Lighting Mechanic ~ To add some difficulty to the game, and a bit of themeing, decided to limit visibility of map.  Items will be able to extend the range of vision, but it starts out pretty small.  Provided is my first background/border/opacity test to see if it would work.  Will have to change how the player and positioning is done though as now the "player" might just be an abs positioned overlay on top of the map and the maze knows where you are based on positioning.</span><img src="http://shaylershepherd.com/images/escape_lighting_01.PNG" width="159" height:"159" />
+      </div>
+      </li>
+      
+      <li style="padding-bottom:20px;">
+        Replaced Nested Binary Array with Nested Object Array ~ 
+      </li>
+    </ul>
+  </div>
+</body>
+</html>

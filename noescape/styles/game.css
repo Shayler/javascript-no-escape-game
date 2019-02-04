@@ -1,0 +1,191 @@
+body {
+  background-color: #090909;
+  font-family: Arial, sans-serif; 
+  color: white;
+}
+
+.container {
+  
+}
+
+.game-header {
+  height: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.game-title {
+  color:white;
+  margin: 0px;
+  font-family: Arial;
+  text-transform: uppercase;
+}
+
+.game-github {
+  align-self: center;
+  line-height: 40px;
+}
+
+.game-icon {
+  width: 32px; 
+  height: 32px;
+}
+
+.game-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.game-interface {
+  background-color: black;
+  width:300px;
+  border: 1px solid #666666;
+  margin-right:24px;
+}
+
+.game-controls {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width:140px;
+  margin: 32px auto;
+  height:140px;
+}
+
+.game-controls-top {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.game-controls-middle {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 76px;
+}
+
+.game-controls-bottom {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.direction {
+  border: 1px solid white;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+}
+
+.game-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+ }
+
+.game-start {
+  text-align: center;
+  padding: 12px;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+  border: 1px solid white;
+}
+
+.game-start.disabled {
+  display: none;
+}
+  
+
+.game-maze {
+  display:flex;
+  flex-direction: row;
+  background-color: black;
+  border:1px solid #666666;
+  
+  width: 624px;
+  height: 624px;
+  overflow: hidden;
+  position: relative;
+}
+
+.game-col {
+  display:flex;
+  flex-direction: column;
+}
+
+.game-box {
+  margin:0px;
+  padding:5px;
+  width:40px;
+  height:40px;  
+  border:1px solid black;
+}
+
+.game-box.left {
+  border-left: 1px solid white;
+}
+
+.game-box.top {
+  border-top: 1px solid white;
+}
+
+.game-light {
+  background: radial-gradient(ellipse at center, rgba(255,255,255,0) 0%,rgba(0,0,0,1) 15%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  position: absolute;
+  width: 1197px;
+  height: 1195px;
+  display: flex;
+  left: -573px;
+  top: -571px;
+  align-items: center;
+  justify-content: center;
+}
+
+.game-player {
+    margin:10px;
+    width: 30px;
+    height: 30px;
+    background-color:red;
+    -webkit-animation-name: spin;
+    -webkit-animation-duration: 4000ms;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    -moz-animation-name: spin;
+    -moz-animation-duration: 4000ms;
+    -moz-animation-iteration-count: infinite;
+    -moz-animation-timing-function: linear;
+    -ms-animation-name: spin;
+    -ms-animation-duration: 4000ms;
+    -ms-animation-iteration-count: infinite;
+    -ms-animation-timing-function: linear;
+    
+    animation-name: spin;
+    animation-duration: 4000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+@-ms-keyframes spin {
+    from { -ms-transform: rotate(0deg); }
+    to { -ms-transform: rotate(360deg); }
+}
+@-moz-keyframes spin {
+    from { -moz-transform: rotate(0deg); }
+    to { -moz-transform: rotate(360deg); }
+}
+@-webkit-keyframes spin {
+    from { -webkit-transform: rotate(0deg); }
+    to { -webkit-transform: rotate(360deg); }
+}
+@keyframes spin {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
+}
