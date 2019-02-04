@@ -8,138 +8,164 @@
 <script type='text/javascript'>
 
 const l1 = [
-    [0b0011, 0b0000, 0b0100, 0b1111, 0b1100, 0b0000, 0b0001, 0b0011, 0b0001, 0b00100, 0b0111, 0b1111],
-    [0b0000, 0b0011, 0b0011, 0b0000, 0b0000, 0b0000, 0b0000, 0b0000, 0b0001, 0b00100, 0b0111, 0b1111],
-    [0b0011, 0b0011, 0b0011, 0b0011, 0b0010, 0b0001, 0b0000, 0b0001, 0b0001, 0b00100, 0b0111, 0b1111],
-    [0b0011, 0b0011, 0b0011, 0b0011, 0b0000, 0b0000, 0b0000, 0b0000, 0b0001, 0b00100, 0b0111, 0b1111],
-    [0b0000, 0b0000, 0b0000, 0b0000, 0b0000, 0b0011, 0b0000, 0b0000, 0b0001, 0b00100, 0b0111, 0b1111],
-    [0b0000, 0b0000, 0b0000, 0b0011, 0b0000, 0b0000, 0b0000, 0b0000, 0b0001, 0b00100, 0b0111, 0b1111],
-    [0b0000, 0b0000, 0b0000, 0b0000, 0b0000, 0b0011, 0b0000, 0b0000, 0b0001, 0b00100, 0b0111, 0b1111],
-    [0b0010, 0b0000, 0b0000, 0b0000, 0b0000, 0b0000, 0b0000, 0b0000, 0b0001, 0b00100, 0b0111, 0b1111],
-    [0b0000, 0b0000, 0b0000, 0b0000, 0b0000, 0b0000, 0b0000, 0b0000, 0b0001, 0b00100, 0b0111, 0b1111],
-    [0b0000, 0b0000, 0b0001, 0b0010, 0b0000, 0b0000, 0b0000, 0b0000, 0b0001, 0b00100, 0b0111, 0b1111],
-    [0b0000, 0b0000, 0b0000, 0b0000, 0b1000, 0b0000, 0b0000, 0b0000, 0b0001, 0b00100, 0b0111, 0b1111],
-    [0b0001, 0b0000, 0b0000, 0b0000, 0b0000, 0b0000, 0b0000, 0b0000, 0b0001, 0b00100, 0b0111, 0b1111]
+    [0b00, 0b00, 0b00, 0b01, 0b00, 0b00, 0b01, 0b00, 0b01, 0b00, 0b00, 0b00],
+    [0b10, 0b10, 0b01, 0b10, 0b10, 0b11, 0b00, 0b01, 0b00, 0b11, 0b01, 0b01],
+    [0b00, 0b11, 0b11, 0b11, 0b00, 0b00, 0b11, 0b00, 0b11, 0b00, 0b10, 0b01],
+    [0b00, 0b01, 0b01, 0b10, 0b00, 0b10, 0b00, 0b11, 0b00, 0b11, 0b01, 0b00],
+    [0b00, 0b00, 0b00, 0b11, 0b00, 0b11, 0b10, 0b00, 0b11, 0b00, 0b10, 0b10],
+    [0b10, 0b00, 0b11, 0b00, 0b01, 0b10, 0b10, 0b01, 0b01, 0b10, 0b01, 0b01],
+    [0b00, 0b10, 0b01, 0b10, 0b01, 0b11, 0b10, 0b00, 0b00, 0b01, 0b10, 0b01],
+    [0b00, 0b01, 0b10, 0b10, 0b11, 0b00, 0b10, 0b10, 0b11, 0b01, 0b01, 0b10],
+    [0b00, 0b01, 0b01, 0b11, 0b10, 0b00, 0b01, 0b10, 0b00, 0b01, 0b01, 0b11],
+    [0b00, 0b00, 0b01, 0b11, 0b00, 0b01, 0b11, 0b10, 0b10, 0b00, 0b01, 0b01],
+    [0b00, 0b11, 0b00, 0b01, 0b11, 0b00, 0b10, 0b10, 0b01, 0b11, 0b00, 0b00],
+    [0b00, 0b01, 0b00, 0b10, 0b10, 0b01, 0b01, 0b10, 0b01, 0b10, 0b10, 0b10]
   ];
 
 let currLevel;
 
 document.onkeydown = keyMove;
 
-function keyMove(event) {
-
-    e = event || window.event;
-
-    if (e.keyCode == '38') {
-        console.log('up');
-        // up arrow
-    }
-    else if (e.keyCode == '40') {
-        // down arrow
-    }
-    else if (e.keyCode == '37') {
-       // left arrow
-    }
-    else if (e.keyCode == '39') {
-       // right arrow
-    }
-
-}
-
-function moveUp() {
-  
-  console.log(canUp(currLevel.player, currLevel.maze));
-}
-
-function moveRight() {
-  
-}
-
-function moveDown() {  
-
-}
-
-function moveLeft() {
-  
-}
-
-
 class Level {
   constructor(size, level, map) {
     this.maze = createMaze(size, level, map);
     this.start = [0,0];
-    this.end = [9,9];
+    this.end = [11,11];
     this.player = [0,0];
   }
 }
 
-function createMaze(size, level, map) {
-  return map;
-}
-
-class Column {
-  constructor (size) {
-    
+Level.prototype.move = function (x, y) {
+  this.player = [x + this.player[0], y + this.player[1]];
+  drawPlayer(this.player[0], this.player[1]);  
+  if(this.player[0] === this.end[0] && this.player[1] === this.end[1]) {
+    start();
   }
-  
 }
 
 class Box {
-  constructor(size, level) {
-    this.top = false;
-    this.left = false;
-    
+  constructor(walls) {
+    this.top = topWall(walls);
+    this.left = leftWall(walls);
   }
 }
 
+function keyMove(event) {
+    e = event || window.event;
+    
+    if (e.keyCode == '38') {
+      moveUp();
+    }
+    else if (e.keyCode == '40') {
+      moveDown();
+    }
+    else if (e.keyCode == '37') {
+      moveLeft();
+    }
+    else if (e.keyCode == '39') {
+      moveRight();
+    }
+}
 
+function moveUp() {
+  if (currLevel) {
+    if (currLevel.player[1] !== 0) {
+      if(canUp(currLevel.player, currLevel.maze)) { currLevel.move(0,-1); };
+    }
+  }
+}
+
+function moveRight() {
+  if (currLevel) {
+    if (currLevel.player[0] !== (currLevel.maze.length-1)) {
+      if(canRight(currLevel.player, currLevel.maze)) { currLevel.move(1,0); };
+    }
+  }
+}
+
+function moveDown() {  
+  if (currLevel) {
+    if (currLevel.player[1] !== (currLevel.maze.length-1)) {
+      if(canDown(currLevel.player, currLevel.maze)) { currLevel.move(0,1); };
+    }
+  }
+}
+
+function moveLeft() {
+  if (currLevel) {
+    if (currLevel.player[0] !== 0) {
+      if(canLeft(currLevel.player, currLevel.maze)) { currLevel.move(-1,0); };
+    }
+  }
+}
+
+function createMaze(size, level, map) {
+  let maze = [];
+  let currBox;
+  let tempCol;
+  for (var i = 0; i < map.length; i++) {
+    tempCol = [];
+    for (var j = 0; j < map[i].length; j++) {
+      currBox = new Box(map[i][j])
+      tempCol.push(currBox);  
+    }
+    maze.push(tempCol);
+  }
+  return maze;
+}
 
 function canUp (pos, maze) {
-  console.log(pos);
-  console.log(maze);
-  return (maze[pos[1]][pos[2]].top && pos[2] != 0) ? true : false;
+  const res = false;
+  return (!maze[pos[0]][pos[1]].top) ? true : false;
 }
 
 function canRight (pos, maze) {
-  return (maze[(pos[1]+1)][pos[2]].left && (maze[(pos[1]+1)])) ? true : false;
+  return (!maze[(pos[0]+1)][pos[1]].left) ? true : false;
 }
 
 function canDown (pos, maze) {
-  return (maze[pos[1]][(pos[2]+1)].top && (maze[(pos[1]+1)])) ? true : false;
+  return (!maze[pos[0]][(pos[1]+1)].top) ? true : false;
 }  
 
 function canLeft (pos, maze) {
-  return (maze[pos[1]][pos[2]].left && pos[1] != 0) ? true : false;
+  return (!maze[pos[0]][pos[1]].left) ? true : false;
 }
 
 function start() {
   currLevel = new Level('normal', 1, l1)
-  drawNodes(l1);
+  drawNodes(currLevel.maze);
+  drawPlayer(0,0);
 }
 
-function drawNodes(l1) {
+function drawNodes(map) {
   gameMaze = document.getElementById('game-maze');
-  for (var i = 0; i < l1.length; i++) {
+  for (var i = 0; i < map.length; i++) {
     gameCol = document.createElement('div');
     gameCol.id = 'game-col-'+ (i+1);
     gameCol.className = 'game-col';
     gameMaze.appendChild(gameCol);
-    for (var j = 0; j < l1[i].length; j++) {
+    for (var j = 0; j < map[i].length; j++) {
       gameBox = document.createElement('div');
       gameBox.id = 'game-box-'+ (j+1);
       gameBox.className = 'game-box';
       
-      if (leftWall(l1[i][j])) {
+      if (map[i][j].left) {
         gameBox.className += ' left';        
       };
  
-      if (topWall(l1[i][j])) {
+      if (map[i][j].top) {
         gameBox.className += ' top';        
       };
       
       gameCol.appendChild(gameBox);      
     }
   }
+}
+
+function drawPlayer(x, y) {
+  var player = document.getElementById('game-light');  
+  player.style.left = (-573 + (52*x)) + 'px';
+  player.style.top = (-571 + (52*y)) + 'px';
 }
 
 function leftWall(box) {
@@ -159,28 +185,26 @@ function topWall(box) {
 		<div class="main">
     <div class="game-header">
 			<h1 class="game-title" id="game-title">
-        No Escape
+        <span class="game-title-no">No</span>Escape
       </h1>
       <div class="game-github" id="game-github">
         <a href="https://github.com/Shayler/javascript-no-escape-game">
           View on GitHub
         </a>
       </div>      
-    </div>
-
-      
-      <div class="game-container" id="game-container">
+    </div>      
+    <div class="game-container" id="game-container">
       <div class="game-interface" id="game-interface">
         <div class="game-controls" id="game-controls">
           <div class="game-controls-top">
-            <div class="direction" ></div>
+            <div class="direction up" onclick="moveUp()"></div>
           </div>
           <div class="game-controls-middle">
-            <div class="direction" onclick="moveUp()"></div>
-            <div class="direction"></div>
+            <div class="direction left" onclick="moveLeft()"></div>
+            <div class="direction right" onclick="moveRight()"></div>
           </div>
           <div class="game-controls-bottom">
-            <div class="direction"></div>
+            <div class="direction down" onclick="moveDown()"></div>
           </div>
         </div>
         <div class="game-inventory" id="game-inventory">
@@ -188,12 +212,14 @@ function topWall(box) {
         <div class="game-buttons" id="game-buttons">
           <div class="game-start" id="game-start" onclick="start()">Start</div>
         </div>
-        
-        <div><a href="https://github.com/Shayler/javascript-no-escape-game/blob/master/README.md" target="_blank" >Dev Notes</a></div>
+        <div>Note: Keyboard arrow keys available for navigation</div>
+        <div>
+        <a href="https://github.com/Shayler/javascript-no-escape-game/blob/master/README.md" target="_blank" >Dev Notes</a></div>
       </div>
       <div class="game-maze" id="game-maze">
+        <div class="game-player end"></div>
         <div class="game-light" id="game-light">
-          <div class="game-player" id="game-player">
+          <div class="game-player start" id="game-player">
           </div>
         </div>
       </div>
