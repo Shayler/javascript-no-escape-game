@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>No Escape</title>
-<link href="css/game.css" rel="stylesheet" type="text/css">
+<link href="styles/game.css" rel="stylesheet" type="text/css">
 
 <script type='text/javascript'>
 
@@ -162,10 +162,9 @@ function topWall(box) {
         No Escape
       </h1>
       <div class="game-github" id="game-github">
-      View on GitHub
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="game-icon" style="color: blue;">
-            <use xlink:href="github.svg"></use>
-        </svg>
+        <a href="https://github.com/Shayler/javascript-no-escape-game">
+          View on GitHub
+        </a>
       </div>      
     </div>
 
@@ -185,38 +184,20 @@ function topWall(box) {
           </div>
         </div>
         <div class="game-inventory" id="game-inventory">
-        
         </div>
         <div class="game-buttons" id="game-buttons">
           <div class="game-start" id="game-start" onclick="start()">Start</div>
         </div>
+        
+        <div><a href="https://github.com/Shayler/javascript-no-escape-game/blob/master/README.md" target="_blank" >Dev Notes</a></div>
       </div>
       <div class="game-maze" id="game-maze">
         <div class="game-light" id="game-light">
           <div class="game-player" id="game-player">
           </div>
         </div>
-        
       </div>
 		</div>
 	</div>
-  <div>
-  <h3>Revision Log</h3>
-    <ul>
-      <li style="padding-bottom:20px;">
-        Switch to Static Map ~ Initial designs had the game moving sideways at a constant rate (depending on difficulty) and all routes visible - similar to the old Mario themed "Game & Watch" handheld that I own.  
-        This would add a lot of complexity for redrawing the maze with every tick and then having to manage moving the character.  Also items wouldn't make as much sense for what I'd had planned.  
-        Decided to stick to a static map but having extensive items and multiple difficulties to offset it being less static.  
-      </li>
-      <li style="padding-bottom:20px;">
-        <div style="display:flex;"><span style="width:500px;">Added Lighting Mechanic ~ To add some difficulty to the game, and a bit of themeing, decided to limit visibility of map.  Items will be able to extend the range of vision, but it starts out pretty small.  Provided is my first background/border/opacity test to see if it would work.  Will have to change how the player and positioning is done though as now the "player" might just be an abs positioned overlay on top of the map and the maze knows where you are based on positioning.</span><img src="http://shaylershepherd.com/images/escape_lighting_01.PNG" width="159" height:"159" />
-      </div>
-      </li>
-      
-      <li style="padding-bottom:20px;">
-        Replaced Nested Binary Array with Nested Object Array ~ 
-      </li>
-    </ul>
-  </div>
 </body>
 </html>

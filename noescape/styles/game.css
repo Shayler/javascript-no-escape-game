@@ -4,6 +4,10 @@ body {
   color: white;
 }
 
+a {
+   color: white !important;
+}
+
 .container {
   
 }
@@ -43,6 +47,10 @@ body {
   width:300px;
   border: 1px solid #666666;
   margin-right:24px;
+  height: 624px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .game-controls {
